@@ -9,3 +9,8 @@
 p {
     margin: 5px 0;
 }
+
+.image {
+    width: 40px;
+    height: auto;
+}

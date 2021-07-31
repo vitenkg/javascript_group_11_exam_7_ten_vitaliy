@@ -90,7 +90,6 @@ function App() {
     };
 
     const removeItem = props => {
-        console.log(props.price);
         setOrder(order.map(prev => {
             if (prev.name === props.name) {
                 if (prev.quantity > 0) {
@@ -100,12 +99,13 @@ function App() {
                         quantity: prev.quantity - 1,
                         priceTotal: prev.priceTotal - prev.price,
                     }
+                } else {
+
                 }
             }
             return prev
         }))
     };
-
 
     const orderComponents = order.map(list => (
             <Order
