@@ -1,0 +1,11 @@
+.menuItem {
+    min-width: 40% ;
+    margin: 5px 10px;
+    padding-bottom: 5px;
+    border: 1px solid grey;
+    border-radius: 6px;
+}
+
+p {
+    margin: 5px 0;
+}

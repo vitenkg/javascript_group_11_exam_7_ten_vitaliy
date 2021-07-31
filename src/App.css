@@ -1,8 +1,34 @@
 .App {
+  display: flex;
   width: 1000px;
   text-align: center;
   margin: 0 auto;
   padding: 0 15px;
 }
 
+.Order {
+
+  width: 350px;
+  border: 1px solid black;
+  margin-left: 15px;
+  padding: 15px;
+}
+
+legend{
+  text-align: left;
+}
+
+.Items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-width: 40%;
+  border: 1px solid black;
+  margin-left: 15px;
+  padding: 15px;
+}
+
+ul {
+  padding-left: 15px;
+}
 

@@ -1,0 +1,18 @@
+li {
+    width: 300px;
+    /*border: 1px solid red;*/
+}
+
+.name, .quantity, .erase {
+    display: inline-block;
+}
+
+.name {
+    width: 50%;
+    text-align: left;
+}
+
+.quantity, .erase {
+    width: 20%;
+    text-align: center;
+}
