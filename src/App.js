@@ -1,25 +1,76 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [menu, setMenu] = useState([
+        {
+            name: 'Hamburger',
+            price: '150',
+            id: 0,
+            count: 0,
+        },
+        {
+            name: 'Sandwich',
+            price: '130',
+            id: 1,
+            count: 0,
+        },
+        {
+            name: 'HotDog',
+            price: '135',
+            id: 2,
+            count: 0,
+        },
+        {
+            name: 'Donuts',
+            price: '60',
+            id: 3,
+            count: 0,
+        },
+        {
+            name: 'French Fries',
+            price: '120',
+            id: 4,
+            count: 0,
+        },
+        {
+            name: 'Coffee',
+            price: '70',
+            id: 5,
+            count: 0,
+        },
+        {
+            name: 'Tea',
+            price: '30',
+            id: 6,
+            count: 0,
+        },
+        {
+            name: 'Cola',
+            price: '40',
+            id: 7,
+            count: 0,
+        },
+    ]);
+
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    const itemsComponents = menu.map(inMenu => (
+
+        <Items
+            key = {inMenu.id}
+            name = {inMenu.name}
+            // onSelect = {}
+        />
+        )
+
+    );
+
+    return (
+        <div className="App">
+
+        </div>
+    );
 }
 
 export default App;
