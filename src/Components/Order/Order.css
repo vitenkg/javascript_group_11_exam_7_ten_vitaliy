@@ -8,11 +8,11 @@ li {
 }
 
 .name {
-    width: 50%;
+    width: 40%;
     text-align: left;
 }
 
-.quantity, .erase {
-    width: 20%;
+.quantity, .price, .erase {
+    width: 18%;
     text-align: center;
 }

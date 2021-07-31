@@ -2,6 +2,7 @@ import './App.css';
 import {useState} from "react";
 import Items from "./Components/Items/Items";
 import Order from "./Components/Order/Order";
+import {nanoid} from 'nanoid';
 
 function App() {
     const menu = [
@@ -55,24 +56,65 @@ function App() {
         },
     ];
 
-    const [order, setOrder] = useState([
-        {
-            name: 'Hamburger',
-            price: 150,
-            quantity: 1,
-            id: 1,
-        }
-
-    ]);
+    const [order, setOrder] = useState([]);
 
     const [totalPrice, setTotalPrice] = useState(0);
+    let bool = true;
+    const addItem = props => {
+        setOrder(order.map(prev => {
+            if (prev.name === props.name) {
+                bool = false;
+                setTotalPrice(totalPrice + props.price);
+                return {
+                    ...prev,
+                    quantity: prev.quantity + 1,
+                    priceTotal: prev.priceTotal + prev.price,
+                }
+            }
+            return prev
+        }))
+
+        if (bool) {
+            setTotalPrice(totalPrice + props.price);
+            setOrder([
+                ...order,
+                {
+                    name: props.name,
+                    price: props.price,
+                    priceTotal: props.price,
+                    quantity: 1,
+                    id: nanoid(),
+                }])
+        }
+
+    };
+
+    const removeItem = props => {
+        console.log(props.price);
+        setOrder(order.map(prev => {
+            if (prev.name === props.name) {
+                if (prev.quantity > 0) {
+                    setTotalPrice(totalPrice - props.price);
+                    return {
+                        ...prev,
+                        quantity: prev.quantity - 1,
+                        priceTotal: prev.priceTotal - prev.price,
+                    }
+                }
+            }
+            return prev
+        }))
+    };
+
 
     const orderComponents = order.map(list => (
             <Order
                 key={list.id}
                 name={list.name}
+                priceTotal={list.priceTotal}
                 price={list.price}
                 qty={list.quantity}
+                onRemove={removeItem}
             />
         )
     );
@@ -82,7 +124,7 @@ function App() {
                 key={inMenu.id}
                 name={inMenu.name}
                 price={inMenu.price}
-                // onSelect = {}
+                onSelect={addItem}
             />
         )
     );
@@ -94,11 +136,12 @@ function App() {
                 <ul>
                     {orderComponents}
                 </ul>
-
+                <p>Total Price: {totalPrice} KGS</p>
             </fieldset>
             <fieldset className="Items">
                 <legend>Add items:</legend>
                 {itemsComponents}
+
             </fieldset>
         </div>
     );

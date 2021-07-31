@@ -4,7 +4,7 @@ import './Items.css';
 const Items = props => {
     // console.log(props);
     return (
-        <div className="menuItem">
+        <div className="menuItem" onClick={()=> props.onSelect(props)}>
             <div>
                 <p>{props.name}</p>
                 <span>Price: {props.price}</span>
